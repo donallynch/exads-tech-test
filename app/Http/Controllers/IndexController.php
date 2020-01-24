@@ -10,7 +10,6 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
-use Psr\SimpleCache\InvalidArgumentException;
 
 /**
  * Class IndexController
@@ -84,7 +83,7 @@ class IndexController
     {
         /* Retrieve all users from table */
         $users = DB::table('users')
-            ->select('*')
+            ->select(['id','name','age','job_title'])
             ->get();
 
         return view('exads.database', [
